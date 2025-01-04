@@ -1,0 +1,316 @@
+.support-headers{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10%;
+    height: 40%;
+}
+
+.unique-font{
+    font-family: "Dancing Script", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 75px;
+}
+
+.support-headers p:nth-child(1){
+    font-size: 65px;
+    line-height: 1.1;
+    /* font-family: "Dancing Script", serif; */
+}
+
+.support-headers p:nth-child(2){
+    color: #8b8b8b;
+}
+
+.input-container, .input-container-book{
+    height: 95%;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8%;
+    padding: 20px;
+}
+
+.input-container{
+  gap: 5%;
+}
+
+.input-container-book{
+  gap: 5%;
+}
+
+
+/* .input-container-book{
+    height: 150%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3%;
+} */
+
+.first-line, .first-line-book{
+    display: flex;
+    gap: 2%;
+}
+
+.first-line, .consecutive-line, .first-line-book{
+    width: 70%;
+}
+
+
+.button-submit{
+    /* background-color: red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    align-content: center;
+}
+
+.button-submit button{
+    padding: 8px;
+    font-size: 15px;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    width: 15%;
+    color: white;
+}
+
+.update-page{
+  height: 80%;
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 600px){
+    .input-container-book{
+        height: 100%;
+        margin-top: 40vh;
+        padding-top: 0%;
+        gap: 8%;
+    }
+    .unique-font{
+      font-size: 50px;
+    }
+    .first-line-book{
+        flex-direction: column;
+        gap: 10%;
+        /* background-color: red; */
+        height: 20%;
+    }
+    .first-line{
+        flex-direction: column;
+        gap: 10%;
+        /* background-color: red; */
+        height: 22%;
+    }
+    .support-headers p:nth-child(1){
+        font-size: 60px;
+    }
+    .support-headers p:nth-child(2){
+        color: #8b8b8b;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .button-submit button{
+        width: 30%;
+    }
+    .support-headers{
+      height: 40%;
+    }
+    .input-container-bookcall{
+      height: 70%;
+    }
+}
+
+@media (max-width: 1000px){
+    .unique-font{
+        font-size: 75px;
+    }
+}
+
+.radio-cards-section {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    justify-content: center;
+  }
+  
+  .radio-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .radio-card p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .radio-card label {
+    font-size: 14px;
+    color: #e0e0e0;
+  }
+  
+  .radio-card input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #66ccff; /* Custom color for radio buttons */
+  }
+
+  /* Ensure input is visible but hide default radio button */
+input[type="radio"] {
+    display: none;
+  }
+  
+  /* Custom Radio Label */
+  input[type="radio"] + .radio-label {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    color: #e0e0e0; /* Light text for dark theme */
+    padding-left: 30px; /* Space for the radio circle */
+    cursor: pointer;
+    position: relative;
+  }
+  
+  /* Custom radio button circle */
+  input[type="radio"] + .radio-label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #444; /* Dark background for circle */
+    border: 2px solid #666; /* Light gray border */
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  /* When radio button is checked */
+  input[type="radio"]:checked + .radio-label::before {
+    background-color: #66ccff; /* Light blue when selected */
+    border-color: #66ccff; /* Blue border */
+  }
+  
+  /* Hover effect */
+  input[type="radio"]:hover + .radio-label::before {
+    border-color: #999; /* Light gray border on hover */
+  }
+  
+  /* Styling for radio-card layout */
+  .radio-cards-section {
+    display: flex;
+    gap: 7%;
+    justify-content: center;
+  }
+  
+  .radio-card {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    width: 35%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .radio-card h3 {
+    margin-top: 10px;
+  }
+  
+  .radio-card p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  /* Media query to stack the cards on smaller screens */
+  @media (max-width: 768px) {
+    .radio-cards-section {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+  
+    .radio-card {
+      width: 70%;
+    }
+
+    .input-container-book{
+      height: 100%;
+      margin-top: 20%;
+    }
+  }
+  
+
+  /* Book a call */
+  .input-container-bookcall{
+    /* background-color: green; */
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input-container-bookcall form{
+    /* background-color: red; */
+    height: 90%;
+    width: 70%;
+    display: flex;
+    gap: 3%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input-box{
+    width: 100%;
+  }
+
+  .input-box p{
+    margin-bottom: 10px;
+  }
+
+
+
+  /* Support */
+
+  /* Example for responsive layout */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.consecutive-line {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.button-submit {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .input-container {
+    padding: 10px;
+  }
+  .consecutive-line {
+    margin-bottom: 15px;
+  }
+}

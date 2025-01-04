@@ -1,0 +1,146 @@
+/* Footer Section Styles */
+.footer {
+    /* background-color: #121212; */
+    color: #e0e0e0; /* Light gray text for readability */
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  /* Trading Academy Branding */
+  .footer-branding {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-description {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+  }
+  
+  /* Disclaimer Section */
+  .footer-disclaimer {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .footer-disclaimer-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .footer-disclaimer-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #b0b0b0;
+  }
+  
+  /* Social Media Section */
+  .footer-social-title {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #b0b0b0; /* Light color for text */
+  }
+  
+  .footer-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .footer-social-link {
+    color: #e0e0e0;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-social-link:hover {
+    color: #66ccff; /* Light blue hover effect */
+  }
+  
+  /* Copyright Notice */
+  .footer-copyright {
+    margin-top: 30px;
+    font-size: 12px;
+    color: #b0b0b0;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer-branding {
+      font-size: 23px;
+    }
+  
+    .footer-description {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  
+    .footer-disclaimer-title {
+      font-size: 16px;
+    }
+  
+    .footer-social-title {
+      font-size: 12px;
+    }
+  
+    .footer-social-links {
+      /* flex-direction: column; */
+      gap: 15px;
+    }
+  
+    .footer-social-link {
+      font-size: 20px;
+    }
+  
+    .footer-copyright {
+      font-size: 10px;
+      padding-bottom: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .footer {
+      padding: 30px 15px;
+    }
+  
+    .footer-branding {
+      font-size: 25px;
+    }
+  
+    .footer-description {
+      font-size: 12px;
+    }
+  
+    .footer-disclaimer-title {
+      font-size: 14px;
+    }
+  
+    .footer-social-title {
+      font-size: 10px;
+    }
+  
+    .footer-social-links {
+      gap: 10px;
+    }
+  
+    .footer-social-link {
+      font-size: 18px;
+    }
+  
+    .footer-copyright {
+      font-size: 8px;
+      padding-bottom: 20px;
+    }
+  }
+  

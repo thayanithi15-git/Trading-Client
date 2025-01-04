@@ -1,0 +1,280 @@
+.navbar-home{
+    height: 20%;
+    /* border: 1px solid green; */
+    align-content: end;
+}
+
+.home-headers{
+    /* border: 1px solid red; */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10%;
+    height: 40%;
+}
+
+.home-headers p:nth-child(1){
+    font-size: 65px;
+    line-height: 1.1;
+}
+
+.home-headers p:nth-child(2){
+    color: #8b8b8b;
+}
+
+.trusted-logos{
+    /* border: 1px solid red; */
+    height: 50%;
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.trusted-logos p{
+    color: #8b8b8b;
+}
+
+.moving-logos-wrapper {
+    width: 100%; /* Take full width of the parent container */
+    display: flex;
+    justify-content: center; /* Center align the logos */
+    align-items: center;
+    /* background-color: forestgreen; */
+    height: 46%;
+}
+
+.moving-logos {
+    display: grid; /* Use grid layout for better control */
+    grid-template-columns: repeat(5, 1fr); /* 5 logos per row */
+    gap: 10px; /* Space between logos */
+    width: 80%; /* Adjust the width as needed */
+    height: 100%;
+}
+
+.logos {
+    width: 100%; /* Allow each logo to fit its grid cell */
+    height: 50%; /* Maintain aspect ratio */
+    overflow: hidden;
+    /* background-color: red; */
+}
+
+.logos img {
+    width: 100%;
+    height: 100%; /* Keep images proportional */
+    object-fit: cover; /* Ensure images fit within the container */
+}
+
+/* Responsive layout adjustments */
+@media (max-width: 1200px){
+    .moving-logos-wrapper{
+        width: 100%;
+        /* background-color: #8b8b8b; */
+    }
+    .moving-logos{
+        /* background-color: aliceblue; */
+        width: 90%;
+    }
+    .logos{
+        padding: 10px;
+    }
+}
+@media (max-width: 1150px){
+    .moving-logos-wrapper{
+        /* background-color: red; */
+    }
+    .moving-logos {
+        grid-template-columns: repeat(4, 1fr); /* 4 logos per row */
+    }   
+    .logos{
+        height: 68%;
+        padding: 0;
+    }
+}
+@media (max-width: 860px) {
+    .moving-logos {
+        grid-template-columns: repeat(3, 1fr); /* 4 logos per row */
+    }
+}
+
+@media (max-width: 680px) {
+    .moving-logos {
+        grid-template-columns: repeat(3, 1fr); /* 3 logos per row */
+    }
+}
+
+@media (max-width: 430px) {
+    .moving-logos {
+        grid-template-columns: repeat(2, 1fr); /* 2 logos per row */
+    }
+}
+
+
+/* Keyframes for seamless looping */
+/* @keyframes move-logos {
+    from {
+        transform: translateX(0); 
+    }
+    to {
+        transform: translateX(-50%); 
+    }
+} */
+
+/* @keyframes move-logos {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% / 2));
+    }
+} */
+
+
+.image_container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3%;
+}
+
+.left-image{
+    /* border: 1px solid white; */
+    width: 35%;
+    height: 80%;
+    overflow: hidden;
+}
+
+.left-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.right-contents{
+    /* border: 1px solid grey; */
+    width: 45%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.heading{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.description{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.description>div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+  
+.sub-heading{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.sub-contents{
+    color: #8b8b8b;
+}
+
+.image_container_second{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 4%;
+}
+
+.left-contents{
+    /* background-color: grey; */
+    width: 45%;
+}
+
+.right-image{
+    /* border: 1px solid white; */
+    width: 35%;
+    height: 80%;
+    overflow: hidden;
+}
+
+.right-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.heading-first{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.footer{
+    width: 100%;
+    height: 80%;
+}
+
+
+@media (max-width: 1000px){
+    .home-headers p:nth-child(1){
+        font-size: 40px;
+    }
+    .unique-font{
+        font-size: 20px;
+    }
+    .moving-logos-wrapper{
+        /* background-color: green; */
+    }
+    .image_container{
+        /* background-color: red; */
+        flex-direction: column;
+        height: 150%;
+        padding: 0;
+        justify-content: initial;
+        gap: 5%;
+    }
+    .left-image{
+        width: 80%;
+        height: 35%;
+        overflow: hidden;
+    }
+    .heading-first{
+        font-size: 23px;
+        margin-bottom: 25px;
+    }
+    .right-contents{
+        /* border: 1px solid green; */
+        width: 85%;
+        height: 40%;
+    }
+    .image_container_second{
+        flex-direction: column;
+        height: 200%;
+        padding: 0;
+        gap: 30%;
+        padding-bottom: 10%;
+        /* background-color: green; */
+    }
+    .left-contents{
+        /* border: 1px solid green; */
+        width: 85%;
+        height: 40%;
+        padding-top: 20%;
+    }
+    .right-image{
+        width: 85%;
+        height: 33%;
+    }
+}
+  

@@ -1,0 +1,32 @@
+.graph{
+    /* background-color: red; */
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.analysis-search{
+    display: flex;
+    justify-content: center;
+    height: 20%;
+    align-items: center;
+}
+
+.analysis-search-content{
+    display: flex;
+    width: 70%;
+    gap: 30px;
+}
+
+.analysis-search-content button{
+    width: 15%;
+    background-color: #0b6bcb;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 17px;
+    border-radius: 20px;
+}
