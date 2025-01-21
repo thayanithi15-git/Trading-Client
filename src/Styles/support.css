@@ -81,6 +81,7 @@
     outline: none;
     border: none;
     border-radius: 20px;
+    background-color: blue;
     width: 15%;
     color: white;
 }

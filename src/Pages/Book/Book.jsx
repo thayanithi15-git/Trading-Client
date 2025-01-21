@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import { Inputbox } from "../../Components/Input/Inputbox";
-import emailjs from "emailjs-com";
-import "../../Styles/book.css";
 
 export default function Book() {
   const [formData, setFormData] = useState({
@@ -12,31 +10,68 @@ export default function Book() {
     plan: "",
   });
 
+  const [error, setError] = useState({});
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError({ ...error, [e.target.name]: "" }); // Clear error for the specific field
+  };
+
+  const validateForm = () => {
+    const newError = {};
+    if (!formData.firstName) newError.firstName = "Fullname is required.";
+    if (!formData.email) newError.email = "Email is required.";
+    if (!formData.contactNo) newError.contactNo = "Contact number is required.";
+    if (!formData.plan) newError.plan = "Please select a plan.";
+
+    setError(newError);
+
+    return Object.keys(newError).length === 0; // Return true if no errors
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    emailjs
-      .send(
-        "service_buz8g9q", // Replace with your EmailJS Service ID
-        "template_g4dsgae", // Replace with your EmailJS Template ID
-        formData, // Form data to send
-        "OQZx0S6rCjKUMQH6U" // Replace with your EmailJS Public Key
-      )
-      .then(
-        (result) => {
+    if (!validateForm()) {
+      return;
+    }
+
+    setLoading(true); // Set loading to true when form submission starts
+
+    const googleAppScriptUrl =
+      "https://script.google.com/macros/s/AKfycbz-7AQoYJ4vs3Qw9VXIJe2Kw1VgPsBUVcKmqzMsj4385VO7VB-jCvaz_YfJPdG9wO_nmQ/exec"; // Replace with your Google Apps Script Web App URL
+
+    fetch(googleAppScriptUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.status === "success") {
           alert(
-            "Your call has been Booked Succesfully. Our Expert team will contact you within 72 business hours!"
+            "Your call has been booked successfully. Our Expert team will contact you within 72 business hours!"
           );
-        },
-        (error) => {
-          console.error(error.text);
-          alert("Failed to send email. Please try again.");
+          setFormData({
+            firstName: "",
+            email: "",
+            contactNo: "",
+            plan: "",
+          });
+        } else {
+          alert(`Failed to submit your data: ${result.message}`);
         }
-      );
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("An error occurred. Please try again.");
+      })
+      .finally(() => {
+        setLoading(false); // Reset loading state after submission completes
+      });
   };
 
   return (
@@ -55,7 +90,7 @@ export default function Book() {
       </div>
       <div className="input-container-bookcall">
         <form onSubmit={handleSubmit}>
-          <div className="input-box">
+          <div className="input-box" style={{ marginBottom: "20px" }}>
             <p>Fullname</p>
             <Inputbox
               placeholder="Peter Parker"
@@ -65,7 +100,7 @@ export default function Book() {
               onChange={handleChange}
             />
           </div>
-          <div className="input-box">
+          <div className="input-box" style={{ marginBottom: "20px" }}>
             <p>Email</p>
             <Inputbox
               placeholder="peter@parker.com"
@@ -75,7 +110,7 @@ export default function Book() {
               onChange={handleChange}
             />
           </div>
-          <div className="input-box">
+          <div className="input-box" style={{ marginBottom: "20px" }}>
             <p>ContactNo</p>
             <Inputbox
               placeholder="+91 00000 00000"
@@ -85,7 +120,7 @@ export default function Book() {
               onChange={handleChange}
             />
           </div>
-          <div className="input-box">
+          <div className="input-box" style={{ marginBottom: "20px" }}>
             <p>Plan</p>
             <div className="radio-cards-section">
               <div className="radio-card">
@@ -111,7 +146,6 @@ export default function Book() {
                   </p>
                 </center>
               </div>
-
               <div className="radio-card">
                 <center>
                   <div style={{ marginBottom: "10px" }}>
@@ -137,8 +171,34 @@ export default function Book() {
               </div>
             </div>
           </div>
+
+          {/* Error messages displayed above the submit button */}
+          {(error.firstName || error.email || error.contactNo || error.plan) && (
+            <div
+              style={{
+                marginBottom: "10px",
+                color: "red",
+                fontSize: "14px",
+              }}
+            >
+              {error.firstName && <p>{error.firstName}</p>}
+              {error.email && <p>{error.email}</p>}
+              {error.contactNo && <p>{error.contactNo}</p>}
+              {error.plan && <p>{error.plan}</p>}
+            </div>
+          )}
+
           <div className="button-submit">
-            <button type="submit">Submit</button>
+            <button
+              type="submit"
+              style={{
+                backgroundColor: loading ? "#ccc" : "", // Keep color unchanged while submitting
+                cursor: loading ? "not-allowed" : "pointer",
+              }}
+              disabled={loading}
+            >
+              {loading ? "Submitting..." : "Submit"}
+            </button>
           </div>
         </form>
       </div>

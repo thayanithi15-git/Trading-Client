@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
 import Navbar from "../../Components/Navbar/Navbar";
 import { Inputbox } from "../../Components/Input/Inputbox";
 import { InputSelect } from "../../Components/Input/Inputbox";
-import '../../Styles/support.css';
+import "../../Styles/support.css";
 
 export default function Support() {
   const [formData, setFormData] = useState({
@@ -13,7 +12,14 @@ export default function Support() {
     queryRelated: "",
     queryDescription: "",
   });
+  const [loading, setLoading] = useState(false);
 
+  // Check if the form is valid
+  const isFormValid = () => {
+    return Object.values(formData).every((field) => field.trim() !== "");
+  };
+
+  // Handle changes in input fields
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -21,6 +27,7 @@ export default function Support() {
     });
   };
 
+  // Handle changes for the query selection dropdown
   const handleSelectChange = (selectedOption) => {
     setFormData({
       ...formData,
@@ -28,26 +35,40 @@ export default function Support() {
     });
   };
 
-  const handleSubmit = (e) => {
+  // Handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const emailData = { ...formData };
+    setLoading(true);
 
-    emailjs
-      .send(
-        "service_buz8g9q", // Replace with your Service ID
-        "template_hyy8w8p", // Replace with your Template ID
-        emailData, // Data to be sent in the email
-        "OQZx0S6rCjKUMQH6U" // Replace with your Public Key
-      )
-      .then(
-        (response) => {
-          alert("Your query has been sent, our team will contact you within 72 business working hours");
+    try {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbxHtBLOhsTHtMBwA6v1fIkj6x00VUnMhw70jT7RKK5B-AJSr17tA0n0SvU14IlovpH9gw/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
         },
-        (error) => {
-          console.error("Failed to send email.", error);
-          alert("Failed to send your message. Please try again.");
-        }
-      );
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        alert("Your query has been submitted successfully!");
+        setFormData({
+          fullName: "",
+          email: "",
+          contactNo: "",
+          queryRelated: "",
+          queryDescription: "",
+        });
+      } else {
+        alert(`Failed to submit your query: ${result.message}`);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("An error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -65,7 +86,7 @@ export default function Support() {
         </p>
       </div>
       <form onSubmit={handleSubmit} className="input-container">
-        <div className="consecutive-line" style={{ marginTop: '25px' }}>
+        <div className="consecutive-line" style={{ marginTop: "25px" }}>
           <div style={{ width: "100%" }}>
             <p>Full Name</p>
             <div style={{ marginTop: "12px" }}>
@@ -133,7 +154,9 @@ export default function Support() {
           </div>
         </div>
         <div className="button-submit">
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={loading || !isFormValid()}>
+            {loading ? "Submitting..." : "Submit"}
+          </button>
         </div>
       </form>
     </div>
