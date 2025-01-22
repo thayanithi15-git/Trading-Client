@@ -106,7 +106,7 @@ export default function Book() {
               placeholder="peter@parker.com"
               height="40px"
               name="email"
-              value={formData.email}
+              value={formData.email}x
               onChange={handleChange}
             />
           </div>
